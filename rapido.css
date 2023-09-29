@@ -1,0 +1,14 @@
+body,html{
+    height: 100%;
+    margin: 0%;
+}
+
+.bc{
+    background-image: url("./img/FUNDO\ DO\ INICIO.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0%;
+
+}
