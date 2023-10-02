@@ -1,0 +1,53 @@
+CREATE TABLE Produto (
+id_produto VARCHAR(10) PRIMARY KEY,
+nome VARCHAR(30),
+descrição VARCHAR(30),
+preço VARCHAR(30),
+categoria VARCHAR(30),
+estoque VARCHAR(30)
+)
+
+CREATE TABLE Pedido (
+id_pedido VARCHAR(10) PRIMARY KEY,
+id_cliente VARCHAR(),
+id_produto VARCHAR(),
+data_e_hora VARCHAR(30),
+status VARCHAR(30),
+metodo_de_pagamento VARCHAR(30),
+valor_total VARCHAR(30),
+FOREIGN KEY(id_produto) REFERENCES Produto (id_produto)
+)
+
+CREATE TABLE Carrinho (
+id_carrinho VARCHAR(10) PRIMARY KEY,
+id_cliente VARCHAR()
+)
+
+CREATE TABLE Cliente (
+id_cliente VARCHAR(10) PRIMARY KEY,
+nome VARCHAR(30),
+senha VARCHAR(30),
+endereço VARCHAR(30),
+telefone VARCHAR(20),
+email VARCHAR(40)
+)
+
+CREATE TABLE Item_de_pedido (
+quantidade VARCHAR(30),
+preço_unidade VARCHAR(30),
+id_pedido VARCHAR(),
+id_produto VARCHAR(),
+FOREIGN KEY(id_pedido) REFERENCES Pedido (id_pedido),
+FOREIGN KEY(id_produto) REFERENCES Produto (id_produto)
+)
+
+CREATE TABLE Produto_carrinho (
+quantidade VARCHAR(30),
+id_carrinho VARCHAR(),
+id_produto VARCHAR(),
+FOREIGN KEY(id_carrinho) REFERENCES Carrinho (id_carrinho),
+FOREIGN KEY(id_produto) REFERENCES Produto (id_produto)
+)
+
+ALTER TABLE Pedido ADD FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente)
+ALTER TABLE Carrinho ADD FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente)
